@@ -42,7 +42,10 @@ def get_page_content(url):
     import requests
     from bs4 import BeautifulSoup
 
-    page = requests.get(url)
+    page = requests.get(url, headers={
+        # Some websites return 403 if you try and hit it with a non-browser useragent
+        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36",
+    })
     soup = BeautifulSoup(page.content, "html.parser")
     page_content = soup.get_text()
     print(f"Page content: {page_content}")
@@ -58,12 +61,11 @@ def generate_summary(page_content):
     print(f"Page content (trimmed): {page_content}")
 
     completion = openai.ChatCompletion.create(
-    model="gpt-3.5-turbo",
-    messages=[
-        {"role": "system", "content": "You are a summarization assistant. The user provides text dumped from Python BeautifulSoup.get_text() and you summarize it. You will be as concise as possible while maintaining accuracy and grammatical correctness."},
-        {"role": "user", "content": page_content},
+        model="gpt-3.5-turbo",
+        messages=[
+            {"role": "system", "content": "You are a summarization assistant. The user provides text dumped from Python BeautifulSoup.get_text() and you summarize it. You will be as concise as possible while maintaining accuracy and grammatical correctness."},
+            {"role": "user", "content": page_content},
     ])
 
     summary = completion.choices[0].message["content"].strip()
     return summary
-
