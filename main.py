@@ -56,7 +56,7 @@ def generate_summary(page_content):
     Uses the OpenAI API to generate a summary of the page content using a summarization prompt.
     """
 
-    # Trim the page_content to 1900 characters to avoid hitting the OpenAI API limit
+    # Trim the page_content to try and avoid hitting the OpenAI API limit
     page_content = page_content[:10000]
     print(f"Page content (trimmed): {page_content}")
 
