@@ -12,9 +12,7 @@ It's entirely self-hosted: the Shortcut runs directly on your device, and the pr
 
 ## Usage
 
-The app uses the excellent [FastAPI](https://github.com/tiangolo/fastapi) to provide a small endpoint that accepts a URL, 
-uses [BeautifulSoup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/) to extract text from the webpage, and sends
-that to OpenAI's [ChatCompletions](https://platform.openai.com/docs/guides/chat) service to create a succinct summary.
+The app uses [FastAPI](https://github.com/tiangolo/fastapi) to provide a small endpoint that accepts a URL, and [BeautifulSoup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/) to extract text from the webpage. This text is sent to OpenAI's [ChatCompletions](https://platform.openai.com/docs/guides/chat) service to create a succinct summary.
 
 E.g. let's say that you have deployed this repo as an app available at `https://summaries.app.dev`, you would send requests that look like
 
