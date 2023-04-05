@@ -1,0 +1,11 @@
+spec:
+  name: chatgpt-summarizer
+  services:
+  - name: api
+    git:
+      branch: main
+      repo_clone_url: https://github.com/stallionlabs/summarizer-app.git
+    envs:
+    - key: OPENAI_TOKEN
+      value: sk-USE_YOUR_OPENAI_TOKEN
+      type: SECRET
