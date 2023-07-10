@@ -30,7 +30,7 @@ matplotlib==3.7.1
 multidict==6.0.2
 munkres==1.1.4
 numexpr==2.8.4
-numpy==1.23.5
+numpy==1.25.1
 openai==0.27.2
 openpyxl==3.0.9
 packaging==23.0
